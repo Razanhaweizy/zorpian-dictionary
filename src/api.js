@@ -1,4 +1,6 @@
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+// On Vercel (and with `vercel dev` locally) the frontend and /api routes
+// share the same origin, so no base URL is needed by default.
+const BASE_URL = import.meta.env.VITE_API_URL || '';
 
 async function request(path, { method = 'GET', body, token } = {}) {
   const res = await fetch(`${BASE_URL}${path}`, {

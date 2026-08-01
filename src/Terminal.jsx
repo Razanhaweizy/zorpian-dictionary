@@ -3,13 +3,20 @@ import { api } from './api';
 import './Terminal.css';
 
 const BANNER = [
-  ' _     _____ _  _____ _____ _____ ____  __  __ ',
-  '| |   | ____| |/ /_ _|_   _| ____|  _ \\|  \\/  |',
-  '| |   |  _| | \' / | |  | | |  _| | |_) | |\\/| |',
-  '| |___| |___| . \\ | |  | | | |___|  _ <| |  | |',
-  '|_____|_____|_|\\_\\___| |_| |_____|_| \\_\\_|  |_|',
+  '    o     o',
+  '     \\   /',
+  '      \\ /',
+  '    /\\_/\\',
+  '   ( o.o )',
+  '    > ^ <',
   '',
-  'a dictionary terminal for a language that does not exist yet',
+  ' ________  ____  ____ ___    _    _   _ ',
+  '|__  / _ \\|  _ \\|  _ \\_ _|  / \\  | \\ | |',
+  '  / / | | | |_) | |_) | |  / _ \\ |  \\| |',
+  ' / /| |_| |  _ <|  __/| | / ___ \\| |\\  |',
+  '/____\\___/|_| \\_\\_|  |___/_/   \\_\\_| \\_|',
+  '',
+  'super cool awesome dictionary',
   'type `help` to see available commands',
 ];
 
@@ -98,7 +105,7 @@ export default function Terminal() {
         case 'define': {
           if (!argStr) return print('usage: lookup <word>', 'error');
           const entry = await api.lookup(argStr);
-          print(`${entry.word} (${entry.type})`, 'highlight');
+	  print(entry.type ? `${entry.word} (${entry.type})` : entry.word, 'highlight');
           print(entry.meaning);
           break;
         }
